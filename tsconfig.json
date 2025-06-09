@@ -1,0 +1,91 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable",
+      "ES6",
+    ],
+    
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@types/*": ["./src/types/*"],
+      "@connections/*": ["./src/connections/*"],
+      "@abis/*": ["./src/abis/*"],
+      "@layouts/*": ["./src/layouts/*"]
+    },
+    
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": false,
+    "importHelpers": true,
+    
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    
+    "allowJs": true,
+    "checkJs": false,
+    
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    
+    "verbatimModuleSyntax": false,
+    "allowImportingTsExtensions": true,
+    
+    "assumeChangesOnlyAffectDirectDependencies": true
+  },
+  
+  "include": [
+    "src/**/*",
+  ],
+  
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "scripts",
+  ],
+  
+  "references": []
+}

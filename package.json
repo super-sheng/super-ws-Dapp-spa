@@ -1,0 +1,36 @@
+{
+  "name": "super-ws-dapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client:dev": "webpack --mode development",
+    "client:prod": "webpack --mode production",
+    "client:serve": "webpack serve --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@swc/core": "^1.11.31",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "swc-loader": "^0.2.6",
+    "terser-webpack-plugin": "^5.3.14",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-merge": "^6.0.1",
+    "yargs-parser": "^22.0.0"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

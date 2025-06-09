@@ -1,0 +1,38 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": true,
+      "dynamicImport": true,
+      "topLevelAwait": true
+    },
+    "target": "es2020",
+    "keepClassNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@types/*": ["./src/types/*"],
+      "@connections/*": ["./src/connections/*"],
+      "@abis/*": ["./src/abis/*"],
+      "@layouts/*": ["./src/layouts/*"]
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "importSource": "react",
+        "development": false,
+        "refresh": false
+      }
+    }
+  },
+  "module": {
+    "type": "es6",
+    "strict": true
+  },
+  "sourceMaps": true
+}
