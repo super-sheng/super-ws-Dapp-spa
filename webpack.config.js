@@ -52,8 +52,8 @@ const webpackBaseConfig = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: dev ? "[name].css" : "[name].[contenthash].css",
-      chunkFilename: dev ? "[id].css" : "[id].[contenthash].css",
+      filename: dev ? "[name].css" : "css/[name].[contenthash:5].css",
+      chunkFilename: dev ? "[id].css" : "css/[id].[contenthash:5].css",
     }),
     // new BundleAnalyzerPlugin({
     //   analyzerMode: 'static',
