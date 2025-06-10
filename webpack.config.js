@@ -3,15 +3,16 @@ const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BuildStatsTablePlugin = require('./plugin/BuildStatsTablePlugin')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const _mode = argv.mode || 'development'
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
 const dev = _mode === 'development'
-
 const webpackBaseConfig = {
   entry: './src/index.tsx',
   output: {
-    path: resolve(process.cwd(), 'dist'),
+    path: resolve(__dirname, 'dist'),
     filename: dev ? "[name].js" : "[name].[contenthash].js",
   },
   resolve: {
@@ -41,7 +42,7 @@ const webpackBaseConfig = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader,"css-loader"],
+        use: [MiniCssExtractPlugin.loader,"css-loader", "postcss-loader"],
       },
     ],
   },
@@ -53,10 +54,14 @@ const webpackBaseConfig = {
       // both options are optional
       filename: dev ? "[name].css" : "[name].[contenthash].css",
       chunkFilename: dev ? "[id].css" : "[id].[contenthash].css",
-    })
+    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
+    // }),
+    new BuildStatsTablePlugin()
   ],
 
-  // stats: 'errors-only'
+  stats: 'errors-only'
 
 }
 
