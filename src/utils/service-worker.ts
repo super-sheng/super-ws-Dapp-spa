@@ -8,7 +8,7 @@ export default function registerServiceWorker () {
           console.log('SW 注册成功:', registration.scope)
         })
         .catch(registrationError => {
-          console.error('SW 注册失败:', registrationError)
+          console.warn('SW 注册失败:', registrationError)
         })
     })
   }

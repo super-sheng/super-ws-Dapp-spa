@@ -50,7 +50,7 @@ const webpackBaseConfig = {
   
   plugins: [
     new CleanWebpackPlugin(),
-    new GenerateSW({
+    !dev ? new GenerateSW({
       clientsClaim: true,
       skipWaiting: true,
       cleanupOutdatedCaches: true,
@@ -89,7 +89,7 @@ const webpackBaseConfig = {
           }
         },
       ]
-    }),
+    }) : null,
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
@@ -100,7 +100,7 @@ const webpackBaseConfig = {
     //   analyzerMode: 'static',
     // }),
     new BuildStatsTablePlugin()
-  ],
+  ].filter(Boolean),
 
   stats: 'errors-only'
 
