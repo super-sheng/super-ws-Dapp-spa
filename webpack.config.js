@@ -2,7 +2,8 @@ const { resolve } = require('path')
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin
+const { GenerateSW } = require('workbox-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const BuildStatsTablePlugin = require('./plugin/BuildStatsTablePlugin')
 const argv = require('yargs-parser')(process.argv.slice(2))
@@ -49,6 +50,46 @@ const webpackBaseConfig = {
   
   plugins: [
     new CleanWebpackPlugin(),
+    new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      cleanupOutdatedCaches: true,
+
+      // SPA 路由支持
+      navigateFallback: '/index.html',
+      navigateFallbackAllowlist: [/^(?!\/__).*/],
+
+      exclude: [/\.map$/, /manifest$/, /\.htaccess$/],
+
+      runtimeCaching: [
+        // API 缓存
+        {
+          urlPattern: /^https:\/\/api\.myapp\.com\//,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api-cache',
+            networkTimeoutSeconds: 5,
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 10 * 60 // 10 分钟
+            }
+          }
+        },
+        
+        // 静态资源
+        {
+          urlPattern: /\.(?:js|css|png|jpg|jpeg|svg|gif|webp)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'static-cache',
+            expiration: {
+              maxEntries: 200,
+              maxAgeSeconds: 30 * 24 * 60 * 60
+            }
+          }
+        },
+      ]
+    }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional

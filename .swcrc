@@ -9,7 +9,7 @@
     },
     "target": "es2020",
     "keepClassNames": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
